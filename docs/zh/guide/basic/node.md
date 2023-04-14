@@ -156,7 +156,7 @@ class customRectModel extends RectNodeModel {
 
 在实际业务中，存在这样的情况，例如在审批场景中，自定义的审批节点存在 3 种状态：
 
-一种是流程还没有走到这个节点的默认状态，一种是流程审批通过状态，一种是审批不通过的驳回状态。在外观上我们需要对不同的状态显示不同的颜色。LogicFlow 的图数据中提到，不论是节点还是边，LogicFlow 都保留了 properties 字段，用于给开发者存放自己的业务属性。示例如下，`properties`的`statu`属性就是一个自定义的业务属性，开发者在自定义节点样式的时候，可以基于`properties`中的属性来控制节点显示不同的样式。
+一种是流程还没有走到这个节点的默认状态，一种是流程审批通过状态，一种是审批不通过的驳回状态。在外观上我们需要对不同的状态显示不同的颜色。LogicFlow 的图数据中提到，不论是节点还是边，LogicFlow 都保留了 properties 字段，用于给开发者存放自己的业务属性。示例如下，`properties`的`status`属性就是一个自定义的业务属性，开发者在自定义节点样式的时候，可以基于`properties`中的属性来控制节点显示不同的样式。
 
 ```js
 class UserTaskModel extends RectNodeModel {
@@ -169,9 +169,9 @@ class UserTaskModel extends RectNodeModel {
   getNodeStyle() {
     const style = super.getNodeStyle();
     const properties = this.properties;
-    if (properties.statu === "pass") {
+    if (properties.status === "pass") {
       style.stroke = "green";
-    } else if (properties.statu === "reject") {
+    } else if (properties.status === "reject") {
       style.stroke = "red";
     } else {
       style.stroke = "rgb(24, 125, 255)";
